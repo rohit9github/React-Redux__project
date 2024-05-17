@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import { useDispatch, useSelector } from "react-redux";
 import { showUser } from "../features/userDetailsslice";
+import Modal from "./Modal";
 
 function Read() {
 
@@ -24,6 +25,7 @@ function Read() {
 
     return (
         <div>
+            {/* <Modal/> */}
             <h1>Read</h1>
             <Container>
                 {users && users.map((v, i) => {
@@ -31,7 +33,7 @@ function Read() {
                         <Card style={{ width: '24rem' }}>
                             <Card.Body>
                                 <Card.Title>{v.name}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{v.age}</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">{v.gender}</Card.Subtitle>
                                 <Card.Text>{v.mail}</Card.Text>
                                 <Card.Link href="#">View</Card.Link>
                                 <Card.Link href="#">Edit</Card.Link>

@@ -5,7 +5,7 @@ import { createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 
 export const createUser = createAsyncThunk("createUser",async(data,{rejectWithValue})=>{
-    const response = await fetch("https://664605f051e227f23aad6f56.mockapi.io/reduxcrud",{
+    const response = await fetch("http://localhost:3000/users",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -27,7 +27,7 @@ export const createUser = createAsyncThunk("createUser",async(data,{rejectWithVa
 
 export const  showUser = createAsyncThunk("showUser",async({rejectWithValue})=>{
 
-    const response = fetch("https://664605f051e227f23aad6f56.mockapi.io/reduxcrud",{
+    const response = fetch("http://localhost:3000/users",{
         method:"GET",
         headers:{
             "Content-Type":"application/json"

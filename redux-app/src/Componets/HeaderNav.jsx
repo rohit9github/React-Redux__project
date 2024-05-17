@@ -4,13 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 
 function HeaderNav(){
 
-  
+  const allUsers = useSelector((state)=>state.app.users)
 
     return(
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -27,7 +28,7 @@ function HeaderNav(){
               <Link to={"/"}>CreatePost</Link>
             </Nav.Link>
             <Nav.Link href="#action2">
-              <Link to={"/read"}>all post</Link>
+              <Link to={"/read"}>all post({allUsers.length})</Link>
             </Nav.Link>
             
           </Nav>

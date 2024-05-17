@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "cddf",
+      "name": "rohit",
+      "mail": "rohit@gmail.com",
+      "age": "22",
+      "gender": "male"
+    },
+    {
+      "id": "8ec1",
+      "name": "jenil",
+      "mail": "jenil@gmail.com",
+      "age": "21",
+      "gender": "male"
+    },
+    {
+      "id": "b64c",
+      "name": "dixit",
+      "mail": "dixit@gmail.com",
+      "age": "23",
+      "gender": "male"
+    },
+    {
+      "id": "56d2",
+      "name": "shayam",
+      "mail": "shyam@gmail.com",
+      "age": "21",
+      "gender": "male"
+    },
+    {
+      "id": "989a",
+      "name": "pinal",
+      "mail": "pinu@gmail.com",
+      "age": "22",
+      "gender": "female"
+    },
+    {
+      "id": "cc88",
+      "name": "rohit",
+      "mail": "gohil@gmail.com",
+      "age": "22",
+      "gender": "male"
+    }
+  ]
+}
