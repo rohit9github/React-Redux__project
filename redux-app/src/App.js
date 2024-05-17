@@ -1,13 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import HeaderNav from './Componets/HeaderNav';
 import Create from './Componets/Create';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      <HeaderNav/>
-      <Create/>
+      <BrowserRouter>
+        <HeaderNav />
+        <Routes>
+          <Route exact path="/" element={<Create />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
