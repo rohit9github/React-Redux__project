@@ -8,11 +8,13 @@ import { useState } from 'react';
 
 import { useDispatch } from'react-redux';
 import { createUser } from '../features/userDetailsslice';
+import { useNavigate } from 'react-router-dom';
 
 function Create() {
 
     const [users, setUsers] = useState({});
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const getUserData = (e)=>{
 
@@ -22,12 +24,13 @@ function Create() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createUser(users));
+        navigate('/read')
     }
 
     return (
         <Container>
             <Row className="justify-content-md-center">
-
+                <h2>fill Data</h2>
                 <Col md="6">
                     <Form className='mt-5' method='post' onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicName">
@@ -41,7 +44,7 @@ function Create() {
 
                         <Form.Group className="mb-3" controlId="formBasicAge">
                             <Form.Label>Age</Form.Label>
-                            <Form.Control name='age' type="text" placeholder="Enter Age" />
+                            <Form.Control name='age' type="text" placeholder="Enter Age" onChange={getUserData} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicAge">
                             <Form.Check type="radio" label="Male" name='gender' value="male" onChange={getUserData} />
