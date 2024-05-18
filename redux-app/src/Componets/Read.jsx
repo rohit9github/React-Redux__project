@@ -14,7 +14,7 @@ function Read() {
     const [showModal,setShowModal] = useState(false);
     const navigate = useNavigate()
 
-    const { users, loading } = useSelector((state) => state.app)
+    const { users, loading,searchData } = useSelector((state) => state.app)
 
     useEffect(() => {
 
@@ -36,7 +36,16 @@ function Read() {
             {showModal && <Modal id={id} showModal={showModal} setShowModal={setShowModal} />}
             <h1>Read</h1>
             <Container>
-                {users && users.map((v, i) => (
+                {users &&
+                    users.filter((v,i)=>{
+                        if(searchData.length === 0){
+                            return v
+                        }
+                        else{
+                            return v.name.toLowerCase().includes(searchData.toLowerCase())
+                        }
+                    })
+                .map((v, i) => (
                    
                         <Card style={{ width: '24rem' }} key={i}>
                             <Card.Body > 

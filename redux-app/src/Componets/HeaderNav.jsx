@@ -1,17 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { searchUserData } from '../features/userDetailsslice';
 
 
 
 function HeaderNav() {
 
+  const[search,setSearch]=useState("");
+  const dispatch = useDispatch()
+
   const allUsers = useSelector((state) => state.app.users)
+
+  useEffect(()=>{
+    dispatch(searchUserData(search))
+  },[search]);
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -37,6 +46,7 @@ function HeaderNav() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e)=>setSearch(e.target.value)}
             />
             <Button variant="outline-success">Search</Button>
           </Form>
