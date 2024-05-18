@@ -38,13 +38,13 @@ function Read() {
             <Container>
                 {users && users.map((v, i) => (
                    
-                        <Card style={{ width: '24rem' }}>
-                            <Card.Body>
+                        <Card style={{ width: '24rem' }} key={i}>
+                            <Card.Body > 
                                 <Card.Title>{v.name}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{v.gender}</Card.Subtitle>
                                 <Card.Text>{v.mail}</Card.Text>
-                                <button onClick={()=>[setId(v.id),setShowModal(true)]}>View</button>
-                                <button onClick={()=>updateUser(v.id)}>Edit</button>
+                                <button onClick={()=>[setId(v.id),setShowModal(true)]}>View</button> || 
+                                 <button onClick={()=>updateUser(v.id)}>Edit</button> || 
                                 <button onClick={()=>dispatch(deleteUser(v.id))}>Delete</button>
                             </Card.Body>
                         </Card>

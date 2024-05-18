@@ -66,6 +66,28 @@ export const deleteUser = createAsyncThunk("deleteUser",async(id,{rejectWithValu
 })
 
 
+// update action
+
+
+export const updateUserData = createAsyncThunk("updateUserData",async(data,{rejectWithValue})=>{
+    const response = await fetch(`http://localhost:3000/users/${data.id}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+    })
+    try{
+        const result = await response.json();
+        return result;
+    }
+    catch(error){
+        console.log(error);
+        return rejectWithValue(error.message);
+    }
+})
+
+
 export const userDetails = createSlice({
     name: "userDetails",
     initialState: {
@@ -111,6 +133,21 @@ export const userDetails = createSlice({
                }
             })
             .addCase(deleteUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+
+            .addCase(updateUserData.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(updateUserData.fulfilled, (state, action) => {
+                state.loading = false;
+                state.users = state.users.map((v,i)=>
+                    v.id === action.payload.id? action.payload : v
+                )
+                
+            })
+            .addCase(updateUserData.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })
