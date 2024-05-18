@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 
 
 
-function HeaderNav(){
+function HeaderNav() {
 
-  const allUsers = useSelector((state)=>state.app.users)
+  const allUsers = useSelector((state) => state.app.users)
 
-    return(
-        <Navbar expand="lg" className="bg-body-tertiary">
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Logo</Navbar.Brand>
+        <h2>logo</h2>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -24,13 +24,12 @@ function HeaderNav(){
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">
-              <Link to={"/"}>CreatePost</Link>
-            </Nav.Link>
-            <Nav.Link href="#action2">
-              <Link to={"/read"}>all post({allUsers.length})</Link>
-            </Nav.Link>
-            
+
+            <Link to="/" className='nav-link' >CreatePost</Link>
+
+            <Link to="/read" className='nav-link' >all post({allUsers.length})</Link>
+
+
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -44,7 +43,7 @@ function HeaderNav(){
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    )
+  )
 }
 
 export default HeaderNav;

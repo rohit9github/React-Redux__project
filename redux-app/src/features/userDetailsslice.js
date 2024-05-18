@@ -14,8 +14,8 @@ export const createUser = createAsyncThunk("createUser",async(data,{rejectWithVa
     });
 
     try{
-        const data = await response.json();
-        return data;
+        const result = await response.json();
+        return result;
     }
     catch(error){
         console.log(error);
@@ -25,9 +25,9 @@ export const createUser = createAsyncThunk("createUser",async(data,{rejectWithVa
 
 // read action
 
-export const  showUser = createAsyncThunk("showUser",async({rejectWithValue})=>{
+export const  showUser = createAsyncThunk("showUser",async(args,{rejectWithValue})=>{
 
-    const response = fetch("http://localhost:3000/users",{
+    const response = await fetch("http://localhost:3000/users",{
         method:"GET",
         headers:{
             "Content-Type":"application/json"
@@ -44,6 +44,27 @@ export const  showUser = createAsyncThunk("showUser",async({rejectWithValue})=>{
 
 })
     
+
+// delete action
+
+
+export const deleteUser = createAsyncThunk("deleteUser",async(id,{rejectWithValue})=>{
+    const response = await fetch(`http://localhost:3000/users/${id}`,{
+        method:"DELETE",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    });
+    try{
+        const result = await response.json();
+        return result;
+    }
+    catch(error){
+        console.log(error);
+        return rejectWithValue(error.message);
+    }
+})
+
 
 export const userDetails = createSlice({
     name: "userDetails",
@@ -77,7 +98,22 @@ export const userDetails = createSlice({
             .addCase(showUser.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
-            });
+            })
+
+            .addCase(deleteUser.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(deleteUser.fulfilled, (state, action) => {
+                state.loading = false;
+               const {id} = action.payload;
+               if(id){
+                state.users = state.users.filter((v,i)=>v.id!== id)
+               }
+            })
+            .addCase(deleteUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
     },
   
 })
