@@ -1,17 +1,10 @@
 {
   "users": [
     {
-      "id": "6bb8",
-      "name": "rohit gohil",
-      "mail": "rohit@gmail.com",
-      "age": "22",
-      "gender": "male"
-    },
-    {
       "id": "697f",
       "name": "jenil",
       "mail": "jenil@gmail.com",
-      "age": "21",
+      "age": "22",
       "gender": "male"
     },
     {
@@ -26,6 +19,41 @@
       "name": "pinal",
       "mail": "pinu@gmail.com",
       "age": "23",
+      "gender": "female"
+    },
+    {
+      "id": "7e82",
+      "name": "rohit",
+      "mail": "rohit@gmail.com",
+      "age": "22",
+      "gender": "male"
+    },
+    {
+      "id": "fdbd",
+      "name": "dixit",
+      "mail": "dixit@gmail.com",
+      "age": "23",
+      "gender": "male"
+    },
+    {
+      "id": "9f82",
+      "name": "radhika",
+      "mail": "radhika@gmail.com",
+      "age": "23",
+      "gender": "female"
+    },
+    {
+      "id": "0e6e",
+      "name": "piyush ",
+      "mail": "piyush@gmail.com",
+      "age": "22",
+      "gender": "male"
+    },
+    {
+      "id": "7f8b",
+      "name": "nansi",
+      "mail": "nenu@gmail.com",
+      "age": "21",
       "gender": "female"
     }
   ]

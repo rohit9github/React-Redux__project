@@ -1,29 +1,27 @@
 import React from "react";
-import "./Modal.css"
 import { useSelector } from "react-redux";
+import "./Modal.css"
 
-function Modal({id,showModal,setShowModal}) {
+function View({ id, modalShow, setModalShow }) {
 
-    const allUsers = useSelector((state)=>state.app.users);
+    const allUsers = useSelector((state) => state.app.users);
 
-    const singleUser = allUsers.filter((v,i)=>v.id==id)
+    const singleUser = allUsers.filter((v, i) => v.id === id)
 
     return (
         <>
-            
             <div className="modalBackground">
                 <div className="modalContainer">
-
-                <button onClick={()=>setShowModal(!showModal)}>Close</button>
-                <h2>Username:- {singleUser[0].name}</h2>
-                <h3>Gender :- {singleUser[0].gender}</h3>
-                <h4>Age :- {singleUser[0].age}</h4>
-                <p>Email :- {singleUser[0].mail}</p>
+                    <button onClick={()=>setModalShow(false)}>Close</button>
+                    <h2>Name :- {singleUser[0].name}</h2>
+                    <h3>Gender :- {singleUser[0].gender} </h3>
+                    <h4>Age :- {singleUser[0].age} </h4>
+                    <p>Email :- {singleUser[0].mail}</p>
                 </div>
-            </div>
+            </div>      
         </>
 
     )
 }
 
-export default Modal;
+export default View;
